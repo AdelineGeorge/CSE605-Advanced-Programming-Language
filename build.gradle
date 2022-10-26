@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    // Apply the application plugin to add support for building an application
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // https://mavenlibs.com/maven/dependency/org.soot-oss/soot
+    implementation group: 'org.soot-oss', name: 'soot', version: '4.3.0'
+    //implementation 'org.soot-oss:soot:4.2.1'
+}
+
+test {
+    useJUnitPlatform()
+}
